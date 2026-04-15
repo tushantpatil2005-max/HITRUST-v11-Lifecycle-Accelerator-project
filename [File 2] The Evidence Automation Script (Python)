@@ -1,0 +1,41 @@
+import boto3
+import json
+
+def audit_hitrust_controls():
+    print("--- Insight Assurance: Automated Evidence Collection ---")
+    
+    # Check MFA for IAM Users (HITRUST Control 01.i)
+    iam = boto3.client('iam')
+    users = iam.list_users()
+    mfa_report = []
+
+    for user in users['Users']:
+        mfa = iam.list_mfa_devices(UserName=user['UserName'])
+        if not mfa['MFADevices']:
+            mfa_report.append(user['UserName'])
+    
+    # Check S3 Bucket Encryption (HITRUST Control 09.a)
+    s3 = boto3.client('s3')
+    buckets = s3.list_buckets()
+    unencrypted_buckets = []
+
+    for bucket in buckets['Buckets']:
+        try:
+            s3.get_bucket_encryption(Bucket=bucket['Name'])
+        except:
+            unencrypted_buckets.append(bucket['Name'])
+
+    # Output Results for the Audit File
+    summary = {
+        "MFA_Violations": mfa_report,
+        "Unencrypted_S3": unencrypted_buckets,
+        "Audit_Timestamp": "2023-10-27"
+    }
+    
+    with open('audit_evidence_summary.json', 'w') as f:
+        json.dump(summary, f, indent=4)
+    
+    print("Evidence collection complete. Summary saved to JSON.")
+
+if __name__ == "__main__":
+    audit_hitrust_controls()
