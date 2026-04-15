@@ -1,0 +1,23 @@
+
+
+[File 1] The Cross-Framework Mapping Logic (Excel/CSV Format)
+
+Title: HITRUST v11 to SOC 2 Type 2 Inheritance Matrix
+Objective: Eliminate redundant evidence requests for SaaS clients.
+
+HITRUST v11 Control ID	Control Name	SOC 2 Criteria	Evidence Requirement	Automated?
+01.a	Role-Based Access Control (RBAC)	CC6.1	Active Directory Export / IAM Policy Review	Yes
+09.m	Protection of Diagnostic Ports	CC6.6	Firewall/Security Group Config (Port 22/3389)	Yes
+10.a	Operational Procedures	CC7.1	Incident Response Plan & Version History	No (Manual Review)
+06.e	Network Protection	CC6.7	VPC Flow Logs / IDS/IPS Configuration	Yes (Scripted)
+
+Assessor’s Note: "By mapping these 40+ overlapping controls, I reduced the client's Evidence Request List (ERL) by 35%, focusing the manual audit effort only on HITRUST-specific healthcare privacy requirements."
+
+
+
+
+    
+
+    
+    
+    
