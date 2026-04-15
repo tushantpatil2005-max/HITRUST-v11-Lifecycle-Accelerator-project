@@ -1,1 +1,1 @@
-# HITRUST-v11-Lifecycle-Accelerator-project
+"I have attached a sample 'HITRUST Lifecycle Accelerator' I developed. It includes a framework mapping matrix to reduce client workload, a Python-based evidence scraper for AWS, and a maturity-based gap analysis report. I believe this tech-enabled approach aligns perfectly with how Insight Assurance is transforming the audit experience."
